@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="warn" name="Batch Email client"
+	packages="">
+	<Appenders>
+		<RollingFile name="RollingFile"
+			fileName="logs/ccomms_batch_client.log"
+			filePattern="logs/$${date:yyyy-MM}/ccomms_batch_client-%d{MM-dd-yyyy}-%i.log.gz">
+			<PatternLayout>
+				<Pattern>%d %p %c{1.} [%t] %m%n</Pattern>
+			</PatternLayout>
+			<Policies>
+				<TimeBasedTriggeringPolicy />
+				<SizeBasedTriggeringPolicy size="250 MB" />
+			</Policies>
+		</RollingFile>
+		<Console name="STDOUT" target="SYSTEM_OUT"
+			ignoreExceptions="false">
+			<PatternLayout pattern="%m%n" />
+		</Console>
+	</Appenders>
+	<Loggers>
+		<Root level="debug">
+			<AppenderRef ref="STDOUT" />
+		</Root>
+		<Logger name="com.allica.ccomms" level="trace" additivity="false">
+			<appenderRef ref="RollingFile" level="info" />
+		</Logger>
+	</Loggers>
+</Configuration>
