@@ -13,9 +13,8 @@
 				<SizeBasedTriggeringPolicy size="250 MB" />
 			</Policies>
 		</RollingFile>
-		<Console name="STDOUT" target="SYSTEM_OUT"
-			ignoreExceptions="false">
-			<PatternLayout pattern="%m%n" />
+		<Console name="STDOUT" target="SYSTEM_OUT" ignoreExceptions="false">
+			<Pattern>%d %p %c{1.} [%t] %m%n</Pattern>
 		</Console>
 	</Appenders>
 	<Loggers>

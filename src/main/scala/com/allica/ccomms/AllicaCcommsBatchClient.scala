@@ -11,8 +11,12 @@ import com.allica.ccomms.service.BatchService
  */
 object AllicaCcommsBatchClient extends App with Logging {
 
-  logger.info("Launched Batch Email process for date : ")
+  if(args.length < 1 ) {
+    throw  new IllegalArgumentException("Insufficient number of arguments. Usage : <runDate>")
+  }
+  val runDate = args(0)
+  logger.info(s"Launched Batch Email process for date : ${runDate}")
   private val batchServ = new BatchService()
-  batchServ.submitBatchJob("")
+  batchServ.submitBatchJob(runDate)
   logger.info("Batch process completed successfully!")
 }

@@ -39,8 +39,8 @@ class BatchService extends Logging {
   def submitBatchJob(runDate: String) {
     val requests = new ListBuffer[CustomerRequest]()
     val hs = new HiveService
-    val loanReqs = hs.getDataForLoans("12082019")
-    val depositReqs = hs.getDataForDeposits("2021-03-18 00:00:00.0")
+    val loanReqs = hs.getDataForLoans(runDate)
+    val depositReqs = hs.getDataForDeposits(runDate)
     logger.info("application_numbers retrieved successfully for both loans and deposits")
     requests ++= loanReqs
     requests ++= depositReqs
